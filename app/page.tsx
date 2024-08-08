@@ -70,6 +70,32 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className="bg-white px-[130px] py-16 flex flex-col justify-center gap-y-16">
+          <h2 className="text-darkAccent text-[40px] font-bold text-center">Why Career Connect Center?</h2>
+          <div className="flex flex-row gap-x-5">
+            <div className="bg-primary text-white p-8 rounded-2xl space-y-4">
+              <h3 className="text-[19px] font-bold">Wide Range of Opportunities</h3>
+              <p>
+                Explore thousands of job postings across a diverse range
+                of industries and locations, including both remote and on-site positions.
+              </p>
+            </div>
+            <div className="bg-primary text-white p-8 rounded-2xl space-y-4">
+              <h3 className="text-[19px] font-bold">User-Friendly Platform</h3>
+              <p>
+                Explore thousands of job postings across a diverse range
+                of industries and locations, including both remote and on-site positions.
+              </p>
+            </div>
+            <div className="bg-primary text-white p-8 rounded-2xl space-y-4">
+              <h3 className="text-[19px] font-bold">Wide Range of Opportunities</h3>
+              <p>
+                Explore thousands of job postings across a diverse range
+                of industries and locations, including both remote and on-site positions.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
       <footer />
     </>
