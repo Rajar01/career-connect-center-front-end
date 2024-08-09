@@ -32,10 +32,12 @@ function JobPage() {
               </div>
             </div>
             <div className="flex flex-row items-center gap-x-4 mb-14">
-              <Image src="/facebook-logo.svg" className="w-[72px] h-[72px]" />
+              <Link href="/companies/1">
+                <Image src="/facebook-logo.svg" className="w-[72px] h-[72px]" />
+              </Link>
               <div className="space-y-2">
                 <div className="flex flex-row items-center gap-x-2 overflow-hidden">
-                  <span className="whitespace-nowrap max-w-[30ch] overflow-hidden">Facebook</span>
+                  <Link href="/companies/1" className="whitespace-nowrap max-w-[30ch] overflow-hidden text-darkAccent">Facebook</Link>
                   <div className="bg-darkAccent w-1 h-1 before:contents-[''] rounded-full" />
                   <div className="flex flex-row items-center gap-x-1">
                     <FeatherIcon icon="map-pin" size={20} className="text-darkAccent" />
