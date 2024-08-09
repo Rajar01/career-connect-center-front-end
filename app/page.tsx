@@ -10,7 +10,7 @@ import Balancer from 'react-wrap-balancer';
 import FeatherIcon from 'feather-icons-react';
 import Navbar from '@/components/navbar';
 
-export default function Home() {
+export default function EmployersLandingPage() {
   const jobs :String[] = [];
 
   for (let i = 0; i < 9; i += 1) {
