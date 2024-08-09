@@ -38,7 +38,7 @@ function Navbar() {
           <Link href="/" className="text-darkAccent hover:text-primary">Employers</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/" className="text-darkAccent hover:text-primary">Company</Link>
+          <Link href="/company" className="text-darkAccent hover:text-primary">Company</Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
