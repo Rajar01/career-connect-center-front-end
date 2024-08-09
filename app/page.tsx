@@ -56,7 +56,7 @@ export default function EmployersLandingPage() {
               <p className="text-base text-darkAccent">
                 Confused about finding work?
                 {' '}
-                <span><Link href="/" className="text-base text-darkAccent underline underline-offset-4 ">View all Jobs</Link></span>
+                <span><Link href="/jobs" className="text-base text-darkAccent underline underline-offset-4 ">View all Jobs</Link></span>
               </p>
             </div>
           </div>
