@@ -31,7 +31,7 @@ function Navbar() {
       <NavbarContent justify="start" className="gap-8">
         <NavbarItem>
           <NavbarBrand>
-            <Image src="./logo.svg" alt="career connect center logo" />
+            <Image src="/logo.svg" alt="career connect center logo" />
           </NavbarBrand>
         </NavbarItem>
         <NavbarItem isActive>
