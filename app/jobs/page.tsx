@@ -10,7 +10,7 @@ import {
   Accordion,
   Checkbox,
   CheckboxGroup, CardHeader, Image, CardFooter,
-  Pagination,
+  Pagination, Link,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
 
@@ -195,7 +195,7 @@ function JobsPage() {
                     </div>
                   </CardBody>
                   <CardFooter>
-                    <Button color="primary" className="rounded-lg text-base h-12 w-[120px]">
+                    <Button as={Link} href="/jobs/1" color="primary" className="rounded-lg text-base h-12 w-[120px]">
                       See Details
                     </Button>
                   </CardFooter>
@@ -207,7 +207,7 @@ function JobsPage() {
         </section>
       </main>
       <footer className="flex items-center justify-center py-4 bg-darkAccent text-white">
-        <span className="text-[14px] font-bold">@2024. All Rights Reserved Career Connect Center.</span>
+        <span className="text-[14px] font-bold">@Copyright 2024. All Rights Reserved Career Connect Center.</span>
       </footer>
     </>
   );
