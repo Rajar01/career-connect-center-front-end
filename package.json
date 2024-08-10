@@ -11,11 +11,13 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
     "@types/feather-icons": "^4.29.4",
+    "@types/react-otp-input": "^2.0.5",
     "feather-icons-react": "^0.7.0",
     "framer-motion": "^11.3.24",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-otp-input": "^3.1.1",
     "react-wrap-balancer": "^1.1.1"
   },
   "devDependencies": {
