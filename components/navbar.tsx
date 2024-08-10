@@ -43,7 +43,7 @@ function Navbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} className="rounded h-12 w-[120px] text-primary text-[16px]" variant="bordered" color="primary">Login</Button>
+          <Button as={Link} href="/login" className="rounded h-12 w-[120px] text-primary text-[16px]" variant="bordered" color="primary">Login</Button>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} className="rounded h-12 w-[120px] text-[16px]" color="primary">Register</Button>
