@@ -134,7 +134,7 @@ function RegisterPage() {
         <span className="self-start">
           Have an account?
           {' '}
-          <Link href="/" className="text-darkAccent underline underline-offset-2">Log in</Link>
+          <Link href="/login" className="text-darkAccent underline underline-offset-2">Log in</Link>
         </span>
       </div>
       <div className="h-full basis-8/12 py-4 pr-4">
