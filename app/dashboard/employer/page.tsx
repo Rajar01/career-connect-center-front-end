@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar';
 import UserType from '@/enums/user-type';
 import { Tab, Tabs } from '@nextui-org/react';
 import ApplicationTable from '@/app/dashboard/employer/components/application-table';
+import InterviewTable from '@/app/dashboard/employer/components/interview-table';
 
 function EmployerDashboardPage() {
   return (
@@ -24,7 +25,7 @@ function EmployerDashboardPage() {
             <ApplicationTable />
           </Tab>
           <Tab key="interviews" title="Interviews">
-            Interview
+            <InterviewTable />
           </Tab>
         </Tabs>
       </main>
