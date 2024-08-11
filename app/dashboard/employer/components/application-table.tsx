@@ -7,7 +7,7 @@ import {
   Pagination,
   Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Selection, Input,
   Dropdown, DropdownTrigger,
-  DropdownMenu, DropdownItem,
+  DropdownMenu, DropdownItem, Modal, useDisclosure, ModalContent, ModalBody,
 } from '@nextui-org/react';
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
@@ -199,7 +199,7 @@ function ApplicationTable() {
           </Chip>
         );
       case 'applicationDocument':
-        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9">View</Button>;
+        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9" onClick={onOpen}>View</Button>;
       default:
         return cellValue;
     }
@@ -301,39 +301,105 @@ function ApplicationTable() {
     </div>
   ), [page, pages]);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <section>
-      <Table
-        shadow="none"
-        removeWrapper
-        topContent={topContent}
-        bottomContent={bottomContent}
-        className=""
+    <>
+      <Modal
+        backdrop="opaque"
+        isOpen={isOpen}
+        hideCloseButton
+        onClose={onClose}
+        size="xl"
         classNames={{
-          base: 'gap-0',
-          th: 'bg-white py-4 border-b-2 border-b-[#D9D9D9] text-darkAccent font-bold text-base',
-          tr: 'py-3 border-b-2 border-b-[#D9D9D9]',
+          base: 'p-4 rounded-lg',
+          body: 'p-0',
         }}
       >
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn
-              key={column.key}
-              align={column.center ? 'center' : 'start'}
-            >
-              {column.label}
-            </TableColumn>
+        <ModalContent>
+          {() => (
+            <ModalBody className="space-y-3">
+              <div className="flex flex-row items-center justify-between text-darkAccent">
+                <span className="font-bold text-[19px]">Uploaded Application Documents</span>
+                <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg" onClick={onClose}>
+                  <FeatherIcon icon="x-circle" />
+                </Button>
+              </div>
+              <div className="space-y-5">
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button color="primary" variant="light" className="text-base rounded-lg">
+                    Download
+                  </Button>
+                </div>
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button color="primary" variant="light" className="text-base rounded-lg">
+                    Download
+                  </Button>
+                </div>
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button color="primary" variant="light" className="text-base rounded-lg">
+                    Download
+                  </Button>
+                </div>
+              </div>
+            </ModalBody>
           )}
-        </TableHeader>
-        <TableBody items={items}>
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </section>
+        </ModalContent>
+      </Modal>
+      <section>
+        <Table
+          shadow="none"
+          removeWrapper
+          topContent={topContent}
+          bottomContent={bottomContent}
+          className=""
+          classNames={{
+            base: 'gap-0',
+            th: 'bg-white py-4 border-b-2 border-b-[#D9D9D9] text-darkAccent font-bold text-base',
+            tr: 'py-3 border-b-2 border-b-[#D9D9D9]',
+          }}
+        >
+          <TableHeader columns={columns}>
+            {(column) => (
+              <TableColumn
+                key={column.key}
+                align={column.center ? 'center' : 'start'}
+              >
+                {column.label}
+              </TableColumn>
+            )}
+          </TableHeader>
+          <TableBody items={items}>
+            {(item) => (
+              <TableRow key={item.id}>
+                {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </section>
+    </>
   );
 }
 
