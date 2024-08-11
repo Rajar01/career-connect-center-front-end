@@ -2,13 +2,13 @@
 
 import React from 'react';
 import {
-  Button, Card, CardBody, CardFooter, CardHeader, Divider, Image, Input,
-  Link,
+  Button, Card, CardBody, CardFooter, CardHeader, Divider, Image, Input, Link,
 } from '@nextui-org/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Balancer from 'react-wrap-balancer';
 import FeatherIcon from 'feather-icons-react';
 import Navbar from '@/components/navbar';
+import UserType from '@/enums/user-type';
 
 export default function EmployersLandingPage() {
   const jobs :String[] = [];
@@ -19,7 +19,7 @@ export default function EmployersLandingPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar userType={UserType.Guest} />
       <main className="mb-[100px]">
         <section className="h-[calc(100vh-98px)] bg-secondary px-[130px] flex flex-row items-center justify-center gap-x-[120px]">
           <div className="basis-6/12">
