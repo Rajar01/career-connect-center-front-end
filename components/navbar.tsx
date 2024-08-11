@@ -37,7 +37,7 @@ function Navbar({ userType }: NavbarProps) {
       classNames={{
         item: ['data-[active=true]:font-bold'], base: 'px-[130px] border-b-[2px] border-[#D9D9D9]', wrapper: 'px-0 h-24',
       }}
-      className={`${isScrolling ? 'bg-white' : 'bg-secondary'}`}
+      className={`${isScrolling || userType !== UserType.Guest ? 'bg-white' : 'bg-secondary'}`}
     >
       <NavbarContent justify="start" className="gap-8">
         <NavbarItem>

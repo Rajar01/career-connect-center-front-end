@@ -3,11 +3,12 @@ import Navbar from '@/components/navbar';
 import { Button, Divider, Image } from '@nextui-org/react';
 import Balancer from 'react-wrap-balancer';
 import FeatherIcon from 'feather-icons-react';
+import UserType from '@/enums/user-type';
 
 function CompanyLandingPage() {
   return (
     <>
-      <Navbar />
+      <Navbar userType={UserType.Guest} />
       <main>
         <section className="h-[calc(100vh-98px)] bg-secondary px-[130px] flex flex-col items-center justify-center">
           <h1 className="text-7xl font-bold text-darkAccent text-center leading-[125%] mb-3">
