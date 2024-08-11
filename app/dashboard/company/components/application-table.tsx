@@ -1,118 +1,142 @@
-'use client';
-
+import React from 'react';
+import { StatusType } from '@/enums/enums';
 import {
   Button,
-  Chip, ChipProps,
-  Image,
+  Chip,
+  ChipProps,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Input, Modal, ModalBody, ModalContent,
   Pagination,
-  Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Selection, Input,
-  Dropdown, DropdownTrigger,
-  DropdownMenu, DropdownItem, Modal, useDisclosure, ModalContent, ModalBody,
+  Selection, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow,
+  useDisclosure,
 } from '@nextui-org/react';
-import React from 'react';
 import FeatherIcon from 'feather-icons-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { capitalize } from '@nextui-org/shared-utils';
 
-type EmployerApplication = {
+type CompanyApplication = {
   id: string,
-  companyName: string,
-  companyLogoURL:string,
+  applicantName: string,
   position: string,
-  jobLocation: string,
   applicationDate: string,
-  status: string,
+  status: StatusType,
 };
 
-const data : EmployerApplication[] = [
+const data: CompanyApplication[] = [
   {
     id: '1',
-    companyName: 'Tokopedia',
-    companyLogoURL: 'https://placehold.co/400',
+    applicantName: 'Gretchen Grant',
     position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '22 July 2024',
-    status: 'pending',
+    applicationDate: '22 August 2024',
+    status: StatusType.ACCEPTED,
   },
   {
     id: '2',
-    companyName: 'Tokopedia',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '22 July 2024',
-    status: 'pending',
+    applicantName: 'Michael Smith',
+    position: 'Product Manager',
+    applicationDate: '15 July 2024',
+    status: StatusType.PENDING,
   },
   {
     id: '3',
-    companyName: 'Apple',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '23 August 2024',
-    status: 'accepted',
+    applicantName: 'Jennifer Lee',
+    position: 'Data Scientist',
+    applicationDate: '10 June 2024',
+    status: StatusType.REJECTED,
   },
   {
     id: '4',
-    companyName: 'Apple',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Developer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '23 August 2024',
-    status: 'rejected',
+    applicantName: 'Samuel Johnson',
+    position: 'UX Designer',
+    applicationDate: '30 May 2024',
+    status: StatusType.ACCEPTED,
   },
   {
     id: '5',
-    companyName: 'Apple',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Developer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '23 August 2024',
-    status: 'rejected',
+    applicantName: 'Emily Davis',
+    position: 'DevOps Engineer',
+    applicationDate: '12 April 2024',
+    status: StatusType.PENDING,
   },
   {
     id: '6',
-    companyName: 'Shoppe',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Developer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '23 August 2024',
-    status: 'rejected',
+    applicantName: 'Daniel Wilson',
+    position: 'Marketing Specialist',
+    applicationDate: '25 March 2024',
+    status: StatusType.REJECTED,
   },
   {
     id: '7',
-    companyName: 'Amazon',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Developer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '23 August 2024',
-    status: 'rejected',
-  }, {
-    id: '8',
-    companyName: 'Tokopedia',
-    companyLogoURL: 'https://placehold.co/400',
+    applicantName: 'Natalie Brown',
     position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '22 July 2024',
-    status: 'pending',
+    applicationDate: '05 February 2024',
+    status: StatusType.ACCEPTED,
+  },
+  {
+    id: '8',
+    applicantName: 'Christopher Green',
+    position: 'Product Manager',
+    applicationDate: '17 January 2024',
+    status: StatusType.PENDING,
   },
   {
     id: '9',
-    companyName: 'Tokopedia',
-    companyLogoURL: 'https://placehold.co/400',
-    position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '22 July 2024',
-    status: 'pending',
+    applicantName: 'Sophia Miller',
+    position: 'Data Scientist',
+    applicationDate: '08 December 2023',
+    status: StatusType.REJECTED,
   },
   {
     id: '10',
-    companyName: 'Tokopedia',
-    companyLogoURL: 'https://placehold.co/400',
+    applicantName: 'Andrew Harris',
+    position: 'UX Designer',
+    applicationDate: '20 November 2023',
+    status: StatusType.ACCEPTED,
+  },
+  {
+    id: '11',
+    applicantName: 'Olivia Clark',
+    position: 'DevOps Engineer',
+    applicationDate: '02 October 2023',
+    status: StatusType.PENDING,
+  },
+  {
+    id: '12',
+    applicantName: 'James Robinson',
+    position: 'Marketing Specialist',
+    applicationDate: '14 September 2023',
+    status: StatusType.REJECTED,
+  },
+  {
+    id: '13',
+    applicantName: 'Ava Martinez',
     position: 'Software Engineer',
-    jobLocation: 'Jakarta, Indonesia',
-    applicationDate: '22 July 2024',
-    status: 'pending',
+    applicationDate: '26 August 2023',
+    status: StatusType.ACCEPTED,
+  },
+  {
+    id: '14',
+    applicantName: 'Liam Lewis',
+    position: 'Product Manager',
+    applicationDate: '07 July 2023',
+    status: StatusType.PENDING,
+  },
+  {
+    id: '15',
+    applicantName: 'Isabella Walker',
+    position: 'Data Scientist',
+    applicationDate: '19 June 2023',
+    status: StatusType.REJECTED,
+  },
+  {
+    id: '16',
+    applicantName: 'Ethan Hall',
+    position: 'UX Designer',
+    applicationDate: '01 May 2023',
+    status: StatusType.ACCEPTED,
   },
 ];
 
@@ -122,7 +146,7 @@ const statusOptions = [
   { name: 'rejected', key: 'rejected' },
 ];
 
-const employerApplicationStatusColorMap: Record<string, ChipProps['color']> = {
+const companyApplicationStatusColorMap: Record<string, ChipProps['color']> = {
   pending: 'default',
   accepted: 'success',
   rejected: 'danger',
@@ -130,8 +154,8 @@ const employerApplicationStatusColorMap: Record<string, ChipProps['color']> = {
 
 const columns = [
   {
-    label: 'Company',
-    key: 'companyName',
+    label: 'Applicant',
+    key: 'applicant',
     center: false,
   },
   {
@@ -140,14 +164,14 @@ const columns = [
     center: false,
   },
   {
-    label: 'Job Location',
-    key: 'jobLocation',
-    center: false,
-  },
-  {
     label: 'Application Date',
     key: 'applicationDate',
     center: false,
+  },
+  {
+    label: 'Application Document',
+    key: 'applicationDocument',
+    center: true,
   },
   {
     label: 'Status',
@@ -155,8 +179,8 @@ const columns = [
     center: true,
   },
   {
-    label: 'Application Document',
-    key: 'applicationDocument',
+    label: 'Actions',
+    key: 'actions',
     center: true,
   },
 ];
@@ -167,24 +191,20 @@ function ApplicationTable() {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 5;
   const hasSearchFilter = Boolean(filterValue);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const renderCell = React.useCallback((application : EmployerApplication, columnKey: React.Key) => {
-    const cellValue = application[columnKey as keyof EmployerApplication];
+  const renderCell = React.useCallback((application : CompanyApplication, columnKey: React.Key) => {
+    const cellValue = application[columnKey as keyof CompanyApplication];
 
     switch (columnKey) {
-      case 'companyName':
-        return (
-          <div className="flex flex-row items-center gap-x-3">
-            <Image src={application.companyLogoURL} className="w-12 h-12 rounded-full" />
-            <span className="text-darkAccent text-base">{application.companyName}</span>
-          </div>
-        );
+      case 'applicant':
+        return <span className="text-darkAccent text-base">{application.applicantName}</span>;
       case 'position':
         return <span className="text-darkAccent text-base">{application.position}</span>;
-      case 'jobLocation':
-        return <span className="text-darkAccent text-base">{application.jobLocation}</span>;
       case 'applicationDate':
         return <span className="text-darkAccent text-base">{application.applicationDate}</span>;
+      case 'applicationDocument':
+        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9" onClick={onOpen}>View</Button>;
       case 'status':
         return (
           <Chip
@@ -193,13 +213,17 @@ function ApplicationTable() {
               base: '!max-w-none w-[100px] h-9 rounded  p-0  ',
               content: 'p-0 flex flex-row items-center justify-center',
             }}
-            color={employerApplicationStatusColorMap[application.status]}
+            color={companyApplicationStatusColorMap[application.status]}
           >
             {application.status}
           </Chip>
         );
-      case 'applicationDocument':
-        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9" onClick={onOpen}>View</Button>;
+      case 'actions':
+        return (
+          <Button isIconOnly variant="light" className="text-darkAccent rounded-lg">
+            <FeatherIcon icon="more-vertical" />
+          </Button>
+        );
       default:
         return cellValue;
     }
@@ -210,7 +234,8 @@ function ApplicationTable() {
 
     if (hasSearchFilter) {
       filteredApplications = filteredApplications.filter(
-        (application) => application.position.toLowerCase().includes(filterValue.toLowerCase()),
+        (application) => application.applicantName.toLowerCase()
+          .includes(filterValue.toLowerCase()),
       );
     }
 
@@ -263,7 +288,7 @@ function ApplicationTable() {
             'data-[has-start-content=true]:ps-0 data-[has-end-content=true]:pe-0',
           ],
         }}
-        placeholder="Search by position name"
+        placeholder="Search by applicant name"
         startContent={<FeatherIcon icon="search" size={24} className="text-[#B3B3B3] group-data-[focus=true]:text-darkAccent group-data-[has-value=true]:text-darkAccent" />}
       />
       <Dropdown>
@@ -300,8 +325,6 @@ function ApplicationTable() {
       />
     </div>
   ), [page, pages]);
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>

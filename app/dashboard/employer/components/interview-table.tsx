@@ -16,6 +16,7 @@ import {
   Selection, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { capitalize } from '@nextui-org/shared-utils';
 
 type Interview = {
