@@ -136,7 +136,7 @@ function Navbar({ userType }: NavbarProps) {
               </PopoverTrigger>
               <PopoverContent>
                 <Listbox classNames={{ base: 'p-2 rounded' }}>
-                  <ListboxItem classNames={{ title: 'text-base' }} className="rounded text-darkAccent" key="profile">Profile</ListboxItem>
+                  <ListboxItem classNames={{ title: 'text-base' }} className="rounded text-darkAccent" key="profile" href={`/dashboard/${UserType.Employer ? 'employer' : UserType.Company && 'company'}/profile`}>Profile</ListboxItem>
                   <ListboxItem classNames={{ title: 'text-base' }} className="rounded text-danger" key="log-out" color="danger">
                     Log out
                   </ListboxItem>
