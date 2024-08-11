@@ -2,10 +2,11 @@
 
 import React from 'react';
 import Navbar from '@/components/navbar';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 import { Tab, Tabs } from '@nextui-org/react';
 import ApplicationTable from '@/app/dashboard/employer/components/application-table';
 import InterviewTable from '@/app/dashboard/employer/components/interview-table';
+import Footer from '@/components/footer';
 
 function EmployerDashboardPage() {
   return (
@@ -29,7 +30,7 @@ function EmployerDashboardPage() {
           </Tab>
         </Tabs>
       </main>
-      <footer />
+      <Footer />
     </>
   );
 }

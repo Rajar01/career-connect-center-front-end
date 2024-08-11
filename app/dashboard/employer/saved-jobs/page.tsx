@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Navbar from '@/components/navbar';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 import {
   Accordion,
   AccordionItem,
@@ -11,8 +11,6 @@ import {
   Checkbox,
   CheckboxGroup, Image,
   Input, Link, Pagination,
-  Select,
-  SelectItem,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
 

@@ -9,7 +9,7 @@ import {
   Listbox,
   ListboxItem,
 } from '@nextui-org/react';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 import FeatherIcon from 'feather-icons-react';
 
 type NavbarProps = {

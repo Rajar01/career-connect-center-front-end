@@ -4,6 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import {
   Button, Card, CardBody, CardFooter, CardHeader, Image, Link,
 } from '@nextui-org/react';
+import { UserType } from '@/enums/enums';
 
 function CompanyPage() {
   const jobs :String[] = [];
@@ -14,7 +15,7 @@ function CompanyPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar userType={UserType.Guest} />
       <main className="px-[130px] mt-16 mb-24 bg-white">
         <section className="flex flex-row items-center gap-x-3 mb-8">
           <FeatherIcon icon="chevron-left" />

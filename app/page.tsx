@@ -8,7 +8,7 @@ import {
 import Balancer from 'react-wrap-balancer';
 import FeatherIcon from 'feather-icons-react';
 import Navbar from '@/components/navbar';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 
 export default function EmployersLandingPage() {
   const jobs :String[] = [];

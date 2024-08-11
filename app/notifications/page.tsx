@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/navbar';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 import FeatherIcon from 'feather-icons-react';
 
 function NotificationsPage() {

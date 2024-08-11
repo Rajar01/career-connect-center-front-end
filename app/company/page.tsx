@@ -3,7 +3,7 @@ import Navbar from '@/components/navbar';
 import { Button, Divider, Image } from '@nextui-org/react';
 import Balancer from 'react-wrap-balancer';
 import FeatherIcon from 'feather-icons-react';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 
 function CompanyLandingPage() {
   return (

@@ -20,7 +20,7 @@ import {
   SelectItem,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 
 function JobsPage() {
   const jobs :String[] = [];

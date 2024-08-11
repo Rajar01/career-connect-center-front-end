@@ -6,7 +6,7 @@ import {
   Button, Card, CardBody, Image, Link, Modal, ModalBody, ModalContent, useDisclosure,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
-import UserType from '@/enums/user-type';
+import { UserType } from '@/enums/enums';
 
 function JobPage() {
   const jobs :String[] = [];
