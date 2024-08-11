@@ -123,7 +123,7 @@ function Navbar({ userType }: NavbarProps) {
                     <span className="text-[#B3B3B3] text-[14px] whitespace-nowrap">2 Minute Ago</span>
                   </div>
                 </div>
-                <Link href="/" className="p-4 w-full text-base text-darkAccent font-bold border-b-[#D9D9D9] border-t-2">
+                <Link href="/notifications" className="p-4 w-full text-base text-darkAccent font-bold border-b-[#D9D9D9] border-t-2">
                   Show all notification
                 </Link>
               </PopoverContent>

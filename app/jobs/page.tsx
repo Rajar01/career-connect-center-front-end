@@ -3,16 +3,24 @@
 import React from 'react';
 import Navbar from '@/components/navbar';
 import {
-  Button, Card, Input, Select,
-  SelectItem,
-  CardBody,
-  AccordionItem,
   Accordion,
+  AccordionItem,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
   Checkbox,
-  CheckboxGroup, CardHeader, Image, CardFooter,
-  Pagination, Link,
+  CheckboxGroup,
+  Image,
+  Input,
+  Link,
+  Pagination,
+  Select,
+  SelectItem,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
+import UserType from '@/enums/user-type';
 
 function JobsPage() {
   const jobs :String[] = [];
@@ -23,7 +31,7 @@ function JobsPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar userType={UserType.Guest} />
       <main className="px-[130px] pt-16 mb-20 bg-white">
         <section className="mb-8">
           <h1 className="text-darkAccent text-[40px] font-bold mb-1">Job Search</h1>

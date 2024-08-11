@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '@/components/navbar';
 import UserType from '@/enums/user-type';
 
-function EmployerDashboard() {
+function EmployerDashboardPage() {
   return (
     <>
       <Navbar userType={UserType.Employer} />
@@ -12,4 +12,4 @@ function EmployerDashboard() {
   );
 }
 
-export default EmployerDashboard;
+export default EmployerDashboardPage;
