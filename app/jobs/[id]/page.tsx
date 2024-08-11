@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import Navbar from '@/components/navbar';
 import {
-  Button, Card, CardBody, Image, Link,
+  Button, Card, CardBody, Image, Link, Modal, ModalBody, ModalContent, useDisclosure,
 } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
 import UserType from '@/enums/user-type';
@@ -9,12 +11,86 @@ import UserType from '@/enums/user-type';
 function JobPage() {
   const jobs :String[] = [];
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   for (let i = 0; i < 6; i += 1) {
     jobs.push(i.toString());
   }
 
   return (
     <>
+      <Modal
+        backdrop="opaque"
+        isOpen={isOpen}
+        hideCloseButton
+        onClose={onClose}
+        size="xl"
+        classNames={{
+          base: 'p-4 rounded-lg',
+          body: 'p-0',
+        }}
+      >
+        <ModalContent>
+          {() => (
+            <ModalBody className="space-y-3">
+              <div className="flex flex-col text-darkAccent">
+                <span className="font-bold text-[19px]">Upload Required Application Documents</span>
+                <span>Please upload all necessary files to complete your job application. </span>
+              </div>
+              <button type="button" className="flex flex-col items-center justify-center border-darkAccent border-2 border-dashed rounded-lg py-5">
+                <FeatherIcon icon="file-plus" size={44} strokeWidth={1.6} className="text-darkAccent mb-5" />
+                <span className="mb-2 text-darkAccent">Click to choose files</span>
+                <div className="flex flex-row gap-x-2 items-center">
+                  <FeatherIcon icon="info" size={20} />
+                  <span className="text-darkAccent font-bold text-[14px]">Maximum file size 2 mb</span>
+                </div>
+              </button>
+              <div className="space-y-5">
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg">
+                    <FeatherIcon icon="trash-2" />
+                  </Button>
+                </div>
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg">
+                    <FeatherIcon icon="trash-2" />
+                  </Button>
+                </div>
+                <div className="bg-secondary px-4 py-3 rounded-lg flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center gap-x-3">
+                    <FeatherIcon icon="file" size={32} />
+                    <div className="flex flex-col gap-y-0.5">
+                      <span className="text-darkAccent">Resume.pdf</span>
+                      <span className="text-[#B3B3B3] text-[14px]">9.83 MB</span>
+                    </div>
+                  </div>
+                  <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg">
+                    <FeatherIcon icon="trash-2" />
+                  </Button>
+                </div>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-x-3">
+                <Button onPress={onClose} color="primary" variant="bordered" className="rounded-lg flex-1">Cancel</Button>
+                <Button onPress={onClose} color="primary" className="rounded-lg flex-1">Apply</Button>
+              </div>
+            </ModalBody>
+          )}
+        </ModalContent>
+      </Modal>
       <Navbar userType={UserType.Guest} />
       <main className="px-[130px] mt-16 mb-24 bg-white">
         <section className="flex flex-row items-center gap-x-3 mb-8">
@@ -26,7 +102,7 @@ function JobPage() {
             <div className="flex flex-row items-center justify-between mb-3">
               <h1 className="text-darkAccent text-[33px] font-bold line-clamp-1 overflow-ellipsis">Sofware Engineer</h1>
               <div className="flex flex-row items-center justify-between gap-x-3">
-                <Button color="primary" className="h-[40px] w-[120px] rounded text-base">Apply Now</Button>
+                <Button color="primary" className="h-[40px] w-[120px] rounded text-base" onClick={onOpen}>Apply Now</Button>
                 <Button isIconOnly color="primary" variant="bordered" className="h-[40px] w-[40px] rounded">
                   <FeatherIcon icon="bookmark" />
                 </Button>
