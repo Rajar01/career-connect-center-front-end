@@ -167,6 +167,7 @@ function ApplicationTable() {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 5;
   const hasSearchFilter = Boolean(filterValue);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const renderCell = React.useCallback((application : EmployerApplication, columnKey: React.Key) => {
     const cellValue = application[columnKey as keyof EmployerApplication];
@@ -300,8 +301,6 @@ function ApplicationTable() {
       />
     </div>
   ), [page, pages]);
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>

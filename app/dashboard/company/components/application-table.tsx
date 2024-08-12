@@ -3,7 +3,7 @@ import { StatusType } from '@/enums/enums';
 import {
   Button,
   Chip,
-  ChipProps,
+  ChipProps, DatePicker,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -191,7 +191,8 @@ function ApplicationTable() {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 5;
   const hasSearchFilter = Boolean(filterValue);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const documentModal = useDisclosure();
+  const interviewModal = useDisclosure();
 
   const renderCell = React.useCallback((application : CompanyApplication, columnKey: React.Key) => {
     const cellValue = application[columnKey as keyof CompanyApplication];
@@ -204,7 +205,7 @@ function ApplicationTable() {
       case 'applicationDate':
         return <span className="text-darkAccent text-base">{application.applicationDate}</span>;
       case 'applicationDocument':
-        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9" onClick={onOpen}>View</Button>;
+        return <Button color="primary" className="text-base rounded-lg w-[100px] h-9" onClick={documentModal.onOpen}>View</Button>;
       case 'status':
         return (
           <Chip
@@ -220,9 +221,30 @@ function ApplicationTable() {
         );
       case 'actions':
         return (
-          <Button isIconOnly variant="light" className="text-darkAccent rounded-lg">
-            <FeatherIcon icon="more-vertical" />
-          </Button>
+          <Dropdown placement="bottom-end" classNames={{ content: 'rounded w-[200px] p-0' }}>
+            <DropdownTrigger className="">
+              <Button isIconOnly variant="light" className="text-darkAccent rounded-lg">
+                <FeatherIcon icon="more-vertical" />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              closeOnSelect
+              classNames={{ base: 'p-2 rounded' }}
+            >
+              <DropdownItem
+                className="rounded text-darkAccent [&>span]:text-base"
+                onPress={interviewModal.onOpen}
+              >
+                Edit
+              </DropdownItem>
+              <DropdownItem
+                className="rounded text-danger [&>span]:text-base"
+                color="danger"
+              >
+                Reject
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         );
       default:
         return cellValue;
@@ -330,9 +352,98 @@ function ApplicationTable() {
     <>
       <Modal
         backdrop="opaque"
-        isOpen={isOpen}
+        isOpen={interviewModal.isOpen}
         hideCloseButton
-        onClose={onClose}
+        onClose={interviewModal.onClose}
+        size="xl"
+        classNames={{
+          base: 'p-4 rounded-lg',
+          body: 'p-0',
+        }}
+      >
+        <ModalContent>
+          {() => (
+            <ModalBody className="space-y-3">
+              <div className="flex flex-col text-darkAccent">
+                <span className="font-bold text-[19px]">Schedule an Interview</span>
+                <span>
+                  Set up the interview date and interview link.
+                  Ensure all fields are completed accurately.
+                </span>
+              </div>
+              <div className="space-y-3">
+                <div className="flex flex-col">
+                  <span className="text-darkAccent font-medium mb-2 after:text-danger after:content-['_*']">Interview date</span>
+                  {/* Temporary solution for style input wrapper (https://github.com/nextui-org/nextui/issues/2895) */}
+                  <DatePicker
+                    className="[&>div]:rounded [&>div]:h-full [&>div]:px-3 [&>div]:active:border-primary
+                [&>div]:active:border-2 [&>div]:focus:border-primary [&>div]:focus:border-2
+                [&>div]:focus-within:border-primary [&>div]:focus-within:border-2
+                [&>div]:target:border-primary [&>div]:target:border-2
+                [&>div]:hover:border-primary [&>div]:hover:border-2
+                [&>div]:visited:border-primary [&>div]:visited:border-2
+                [&>div]:focus-visible:border-primary [&>div]:focus-visible:border-2
+                [&>div]:group-active:border-primary [&>div]:group-active:border-2
+                [&>div]:group-focus:border-primary [&>div]:group-focus:border-2
+                [&>div]:group-focus-within:border-primary
+                [&>div]:group-focus-within:border-2 [&>div]:group-target:border-primary
+                [&>div]:group-target:border-2 [&>div]:group-hover:border-primary
+                [&>div]:group-hover:border-2 [&>div]:group-visited:border-primary
+                [&>div]:group-visited:border-2 [&>div]:group-focus-visible:border-primary
+                [&>div]:group-focus-visible:border-2"
+                    classNames={{
+                      base: [
+                        'w-full h-[40px]',
+                      ],
+                    }}
+                    variant="bordered"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span
+                    className="text-darkAccent font-medium mb-2 after:text-danger after:content-['_*']"
+                  >
+                    Interview link
+                  </span>
+                  <Input
+                    classNames={{
+                      base: 'w-full h-[40px]',
+                      inputWrapper: [
+                        'rounded h-full px-3',
+                        'group-data-[focus=true]:border-primary group-data-[focus=true]:border-2',
+                        'group-data-[hover=true]:border-primary',
+                      ],
+                      input: [
+                        'text-base !text-darkAccent',
+                        'placeholder:text-[#B3B3B3]',
+                        'data-[has-start-content=true]:ps-0 data-[has-end-content=true]:pe-0',
+                      ],
+                    }}
+                    variant="bordered"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-x-3">
+                <Button
+                  onPress={interviewModal.onClose}
+                  color="primary"
+                  variant="bordered"
+                  className="rounded-lg flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button onPress={interviewModal.onClose} color="primary" className="rounded-lg flex-1">Save</Button>
+              </div>
+            </ModalBody>
+          )}
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        backdrop="opaque"
+        isOpen={documentModal.isOpen}
+        hideCloseButton
+        onClose={documentModal.onClose}
         size="xl"
         classNames={{
           base: 'p-4 rounded-lg',
@@ -344,7 +455,7 @@ function ApplicationTable() {
             <ModalBody className="space-y-3">
               <div className="flex flex-row items-center justify-between text-darkAccent">
                 <span className="font-bold text-[19px]">Uploaded Application Documents</span>
-                <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg" onClick={onClose}>
+                <Button isIconOnly color="danger" variant="light" className="text-danger rounded-lg" onClick={documentModal.onClose}>
                   <FeatherIcon icon="x-circle" />
                 </Button>
               </div>
