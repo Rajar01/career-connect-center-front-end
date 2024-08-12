@@ -12,7 +12,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Input,
+  Input, Link,
   Pagination,
   Selection,
   Table, TableBody, TableCell, TableColumn, TableHeader, TableRow,
@@ -376,7 +376,15 @@ function VacancyTable() {
           ))}
         </DropdownMenu>
       </Dropdown>
-      <Button startContent={<FeatherIcon icon="plus" />} color="primary" className="rounded-lg h-12 text-base">Add Vacancy</Button>
+      <Button
+        startContent={<FeatherIcon icon="plus" />}
+        color="primary"
+        className="rounded-lg h-12 text-base"
+        as={Link}
+        href="/dashboard/company/jobs/create"
+      >
+        Add Vacancy
+      </Button>
     </div>
   ), [filterValue, onSearchChange, onClear, statusFilter]);
 
