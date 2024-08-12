@@ -6,6 +6,8 @@ import { UserType } from '@/enums/enums';
 import { Tab, Tabs } from '@nextui-org/react';
 import VacancyTable from '@/app/dashboard/company/components/vacancy-table';
 import ApplicationTable from '@/app/dashboard/company/components/application-table';
+import InterviewTable from '@/app/dashboard/company/components/interview-table';
+import Footer from '@/components/footer';
 
 function CompanyDashboardPage() {
   return (
@@ -28,11 +30,11 @@ function CompanyDashboardPage() {
             <ApplicationTable />
           </Tab>
           <Tab key="interviews" title="Interviews">
-            Interviews Table
+            <InterviewTable />
           </Tab>
         </Tabs>
       </main>
-      <footer />
+      <Footer />
     </>
   );
 }

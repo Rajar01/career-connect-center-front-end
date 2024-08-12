@@ -19,7 +19,7 @@ import FeatherIcon from 'feather-icons-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { capitalize } from '@nextui-org/shared-utils';
 
-type Interview = {
+type EmployerInterview = {
   id: string,
   companyName: string,
   companyLogoURL:string,
@@ -30,7 +30,7 @@ type Interview = {
   interviewLink:string
 };
 
-const data: Interview[] = [
+const data: EmployerInterview[] = [
   {
     id: '1',
     companyName: 'Tokopedia',
@@ -295,8 +295,8 @@ function InterviewTable() {
   const rowsPerPage = 5;
   const hasSearchFilter = Boolean(filterValue);
 
-  const renderCell = React.useCallback((interview : Interview, columnKey: React.Key) => {
-    const cellValue = interview[columnKey as keyof Interview];
+  const renderCell = React.useCallback((interview : EmployerInterview, columnKey: React.Key) => {
+    const cellValue = interview[columnKey as keyof EmployerInterview];
 
     switch (columnKey) {
       case 'companyName':

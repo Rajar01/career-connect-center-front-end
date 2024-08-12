@@ -155,7 +155,7 @@ const companyApplicationStatusColorMap: Record<string, ChipProps['color']> = {
 const columns = [
   {
     label: 'Applicant',
-    key: 'applicant',
+    key: 'applicantName',
     center: false,
   },
   {
@@ -197,7 +197,7 @@ function ApplicationTable() {
     const cellValue = application[columnKey as keyof CompanyApplication];
 
     switch (columnKey) {
-      case 'applicant':
+      case 'applicantName':
         return <span className="text-darkAccent text-base">{application.applicantName}</span>;
       case 'position':
         return <span className="text-darkAccent text-base">{application.position}</span>;
