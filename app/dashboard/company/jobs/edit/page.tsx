@@ -21,7 +21,8 @@ function CreateVacancyPage() {
         <section className="mb-8">
           <h1 className="text-darkAccent text-[40px] font-bold mb-1">Edit Vacancy</h1>
           <h2 className="text-darkAccent text-base">
-            Update the details and requirements of your vacancy to attract the most suitable candidates.
+            Update the details and requirements of your
+            vacancy to attract the most suitable candidates.
           </h2>
         </section>
         <section className="grid grid-cols-2 gap-x-5 gap-y-8 mb-16">
