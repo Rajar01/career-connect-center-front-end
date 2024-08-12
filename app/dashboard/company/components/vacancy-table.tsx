@@ -376,6 +376,7 @@ function VacancyTable() {
           ))}
         </DropdownMenu>
       </Dropdown>
+      <Button startContent={<FeatherIcon icon="plus" />} color="primary" className="rounded-lg h-12 text-base">Add Vacancy</Button>
     </div>
   ), [filterValue, onSearchChange, onClear, statusFilter]);
 
